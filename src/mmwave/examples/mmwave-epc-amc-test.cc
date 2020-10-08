@@ -75,22 +75,30 @@ main (int argc, char *argv[])
    * 	Time (micro-sec)  |  Tb-size in bytes
    * */
 
-	LogComponentEnable ("MmWaveSpectrumPhy", LOG_LEVEL_DEBUG);
-//	LogComponentEnable ("MmWaveBeamforming", LOG_LEVEL_DEBUG);
-//	LogComponentEnable ("MmWaveUePhy", LOG_LEVEL_DEBUG);
-//	LogComponentEnable ("MmWaveEnbPhy", LOG_LEVEL_DEBUG);
+	LogComponentEnable ("MmWaveSpectrumPhy", LOG_LEVEL_INFO);
+
+	//	LogComponentEnable ("MmWaveBeamforming", LOG_LEVEL_DEBUG);
+//	LogComponentEnable ("MmWaveUePhy", LOG_LEVEL_INFO);
+	LogComponentEnable ("LteUeRrc", LOG_LEVEL_INFO);
+///	LogComponentEnable ("MmWaveEnbPhy", LOG_LEVEL_INFO);
 //	LogComponentEnable ("MmWaveFlexTtiMacScheduler", LOG_LEVEL_DEBUG);
+
 	LogComponentEnable ("MmWavePhyRxTrace", LOG_LEVEL_DEBUG);
 	//LogComponentEnable ("LteRlcUm", LOG_LEVEL_LOGIC);
-	//LogComponentEnable ("MmWaveUeMac", LOG_LEVEL_LOGIC);
+//	LogComponentEnable ("MmWaveEnbMac", LOG_LEVEL_INFO);
 	//LogComponentEnable ("UdpClient", LOG_LEVEL_INFO);
 	//LogComponentEnable ("PacketSink", LOG_LEVEL_INFO);
 	//LogComponentEnable("PropagationLossModel",LOG_LEVEL_ALL);
+//	LogComponentEnable ("MmWaveFlexTtiMacScheduler", LOG_LEVEL_INFO);
+
+	LogComponentEnable ("MmWaveLteRrcProtocolReal", LOG_LEVEL_INFO);
+
+	//LogComponentEnable ("MmWaveHarqPhy", LOG_LEVEL_ALL);
 
 	uint16_t numEnb = 1;
 	uint16_t numUe = 1;
 
-	double simTime = 1.0;
+	double simTime = 2.0;
 	bool harqEnabled = true;
 	bool rlcAmEnabled = true;
 	int mcsDl = -1;
@@ -117,6 +125,7 @@ main (int argc, char *argv[])
 	cmd.Parse(argc, argv);
 
 	simTime = ((lossMax - lossMin) / increment) * (updateInterval/1000.0);
+	simTime = 2.0;
 
 	if (mcsDl >= 0 && mcsDl < 29)
 	{
